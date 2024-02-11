@@ -1,0 +1,31 @@
+{% extends 'default/default.html' %}
+
+{% block title %}
+Dish consumption
+{% endblock title %}
+
+{% block content %}
+   <h3>{{ hello_dish }}</h3>
+   <form action="" method="get">
+       {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    {% if result %}
+        <p>Приготовлено блюдо по рецепту {{ recipe_cooked.name }}</p>
+        <p>Использованы продукты</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">id продукта</th>
+                    <th scope="col">Название продукта</th>
+                </tr>
+            </thead>
+            {% for i in product_used %}
+                <tr scope="row">
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock content %}

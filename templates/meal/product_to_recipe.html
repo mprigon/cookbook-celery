@@ -1,0 +1,30 @@
+{% extends 'default/default.html' %}
+
+{% block title %}
+Product consumption
+{% endblock title %}
+
+{% block content %}
+<h3>{{ hello_product }}</h3>
+<form action="" method="get">
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% if result %}
+    <h4>{{ result }}</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Рецепт</th>
+                <th scope="col">Продукт</th>
+                <th scope="col">Вес продукта</th>
+            </tr>
+            <tr>
+                <td scope="row">{{ recipe.name }}</td>
+                <td scope="row">{{ product.name }}</td>
+                <td scope="row">{{ weight }}</td>
+            </tr>
+        </thead>
+    </table>
+{% endif %}
+{% endblock content %}

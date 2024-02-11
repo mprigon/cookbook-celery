@@ -1,0 +1,47 @@
+{% extends 'default/default.html' %}
+
+{% block title %}
+Recipe analytic
+{% endblock title %}
+
+{% block content %}
+<h3>{{ hello_recipe_analytic }}</h3>
+<form action="" method="get">
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% if result %}
+<!--    <p>{{ result.items }}</p>-->
+    <h4>Рецепты без {{ product_selected_name }}</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id рецепта</th>
+                <th scope="col">Название рецепта</th>
+            </tr>
+        </thead>
+        {% for i in recipe_without_product %}
+        <tr scope="row">
+            <td>{{ i.id }}</td>
+            <td>{{ i.name }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <h4>Рецепты с малым содержанием продукта</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id рецепта</th>
+                <th scope="col">Название рецепта</th>
+            </tr>
+        </thead>
+        {% for i in recipe_with_low_product %}
+            <tr>
+                <td scope="row">{{ i.id }}</td>
+                <td scope="row">{{ i.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock content %}
